@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.entity.workhours;
 import com.example.demo.repository.MemberCrudRepository;
+import com.example.demo.workHours.SetDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -18,12 +19,21 @@ public class SpringDataJdbcSampleApplication {
 	@Qualifier("CRUD")
 	MemberCrudRepository repository;
 	@Autowired
-	@Qualifier("insert")
+	@Qualifier("Insert")
 	InsertDateTime insertDateTime;
 
+	@Autowired
+	@Qualifier("SetDateTime")
+	SetDateTime setDateTime;
 
 	private void execute() {
-		insertDateTime.insert();
+
+		String start_date = setDateTime.getStart_date();
+		String end_date = setDateTime.getEnd_date();
+		String start_time = setDateTime.getStart_time();
+		String end_time = setDateTime.getEnd_time();
+
+		insertDateTime.insert(start_date, end_date, start_time, end_time);
 	}
 
 	private void executeSelect() {

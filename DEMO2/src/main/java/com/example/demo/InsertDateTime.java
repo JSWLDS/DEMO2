@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-@Component("insert")
+@Component("Insert")
 public class InsertDateTime {
 
     @Autowired
@@ -27,12 +27,7 @@ public class InsertDateTime {
     MemberCrudRepository repository;
 
 
-    public void insert(){
-        String start_date = "2023-01-01";
-        String end_date = "2023-04-30";
-
-        String start_time = "09:30";
-        String end_time = "10:30";
+    public void insert(String start_date,  String end_date,  String start_time,  String end_time){
 
         List<LocalDate> dateList = dateGetRepository.getDatesBetweenTwoDates(start_date, end_date);
         List<LocalTime> startTimeList = dateGetRepository.getDatesBetweenTwoTimes(start_time, end_time);
